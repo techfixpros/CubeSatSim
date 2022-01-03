@@ -29,6 +29,8 @@ sleep 2
 
 pkill -o chromium &>/dev/null
 
+sudo systemctl stop rtl_tcp
+
 sudo killall -9 java &>/dev/null
 
 sudo killall -9 rtl_fm &>/dev/null
@@ -39,6 +41,15 @@ sudo killall -9 rtl_tcp &>/dev/null
 
 sudo killall -9 qsstv &>/dev/null
 
-sudo systemctl start rtl_tcp
+sudo killall -9 direwolf &>/dev/null
 
-$SHELL
+sudo killall -9 aplay &>/dev/null
+
+sudo killall -9 zenity &>/dev/null
+
+
+sudo /bin/sh -c '/usr/local/bin/rtl_tcp -a $(hostname -I|cut -f1 -d " ")'
+
+sleep 5
+
+#$SHELL
